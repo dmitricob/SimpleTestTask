@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardImage: {fileID: 1479214324439325086}
   _cardButton: {fileID: 2860084096373126566}
-  _flipSpeed: 1
+  _flipSpeed: 10
 --- !u!114 &2860084096373126566
 MonoBehaviour:
   m_ObjectHideFlags: 0

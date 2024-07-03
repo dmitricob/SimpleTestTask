@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,34 +21,44 @@ namespace UI.Cards
 
         private Sprite _baseSprite;
         
-        private float _flipSpeedDeltaTime;
+        private float _flipSpeedDeltaTime => _flipSpeed * Time.deltaTime;
+        
+        private ISoundSystem _soundSystem;
+        private Coroutine _coroutine;
+        private bool _isStarted;
         public int Id { get; private set; }
         
         public CardData CardData => _cardData;
 
-        private void Awake()
+        private void Start()
         {
-            _baseSprite = _cardImage.sprite;
-            _flipSpeedDeltaTime = _flipSpeed * Time.deltaTime;
-            _cardButton.onClick.AddListener(OnCardClick);
+            _isStarted = true;
         }
 
         private void OnEnable()
         {
+            if(_isStarted == false)
+            {
+                _baseSprite = _cardImage.sprite;
+                // _flipSpeedDeltaTime = _flipSpeed * Time.deltaTime;
+                _cardButton.onClick.AddListener(OnCardClick);
+            }
+            
             Reset();
         }
         
         private void Reset()
         {
-            _isMatched = true;
+            _isMatched = false;
             _isFlipped = false;
             _cardImage.sprite = _baseSprite;
             _cardImage.transform.localScale = Vector3.one;
             _cardButton.interactable = true;
         }
 
-        public void SetCardData(int number, int id, Sprite sprite)
+        public void Initialize(ISoundSystem soundSystem, int number, int id, Sprite sprite, bool isFlipped = false)
         {
+            _soundSystem = soundSystem;
             Id = number;
             _cardData = new CardData
             {
@@ -59,6 +70,7 @@ namespace UI.Cards
         private void OnCardClick()
         {
             FLip();
+            _soundSystem.PlaySound(Const.Sounds.CardFlip);
         }
 
         public void SetFlipped(bool isFlipped)
@@ -70,9 +82,9 @@ namespace UI.Cards
         
         public void FLip(float delay = 0)
         {
-            _isFlipped = !_isFlipped;
             _cardButton.interactable = false;
-            StartCoroutine(FlipAnimation(delay));
+            // StopCoroutine(_coroutine);
+            _coroutine = StartCoroutine(FlipAnimation(delay));
         }
 
         private IEnumerator FlipAnimation(float delay)
@@ -87,6 +99,7 @@ namespace UI.Cards
                 yield return null;
             }
             
+            _isFlipped = !_isFlipped;
             _cardImage.sprite = _isFlipped ? _cardData.Sprite : _baseSprite;
             
             while (scale.x < 1)
@@ -105,7 +118,8 @@ namespace UI.Cards
         public void Matched(bool isEmidiately = false)
         {
             _isMatched = true;
-            StartCoroutine(MatchedAnimation(isEmidiately));
+            // StopCoroutine(_coroutine);
+            _coroutine = StartCoroutine(MatchedAnimation(isEmidiately));
         }
 
         private IEnumerator MatchedAnimation(bool isEmidiately)
@@ -146,5 +160,7 @@ namespace UI.Cards
         {
             _cardButton.onClick.RemoveListener(OnCardClick);
         }
+
+        
     }
 }

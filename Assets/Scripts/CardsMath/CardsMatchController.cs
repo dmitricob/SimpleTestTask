@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using CardsMath.Data;
 using Core;
 using UI.Cards;
@@ -27,18 +28,20 @@ namespace CardsMath
         private List<Sprite> _sprites;
         private ObjectPool _objectPool;
         private ISaveProvider _saveProvider;
+        private ISoundSystem _soundSystem;
 
         private void Awake()
         {
             _grid = _gridObejct.GetComponent<IGrid>();
         }
     
-        public void Initialize(List<Sprite> sprites, ObjectPool objectPool, ISaveProvider saveProvider)
+        public void Initialize(List<Sprite> sprites, ObjectPool objectPool, ISaveProvider saveProvider, ISoundSystem soundSystem)
         {
             _sprites = sprites;
             _objectPool = objectPool;
             _saveProvider = saveProvider;
-
+            _soundSystem = soundSystem;
+            
             _isInitialized = true;
             if(saveProvider.HasSave<CardsMatchSaveData>())
                 StartGame(saveProvider.Load<CardsMatchSaveData>());
@@ -109,15 +112,15 @@ namespace CardsMath
             for (var i = 0; i < cardsMatchSaveData.Rows * cardsMatchSaveData.Columns; i++)
             {
                 var card = _objectPool.Pop(_cardPrefab).GetComponent<CardView>();
+                card.Initialize(_soundSystem,i, cardsMatchSaveData.CardsId[i], _sprites[cardsMatchSaveData.CardsId[i]]);
                 if (cardsMatchSaveData.CardsMatched[i])
                 {
                     card.Matched(true);
                 }
                 else
                 {
-                    card.SetCardData(i, cardsMatchSaveData.CardsId[i], _sprites[cardsMatchSaveData.CardsId[i]]);
                     card.SetFlipped(true);
-                    card.FLip(3);
+                    card.FLip(1);
                     card.Flipped += OnCardFlipped;
                 }
                 
@@ -135,8 +138,10 @@ namespace CardsMath
                 return;
             }
         
-            if(CheckMatch(_lastFlippedCardView, currentCardView))
+            if(CheckMatch(_lastFlippedCardView.CardData, currentCardView.CardData))
             {
+                _soundSystem.PlaySound(Const.Sounds.CardMatch);
+                
                 currentCardView.Matched();
                 _lastFlippedCardView.Matched();
                 
@@ -147,9 +152,13 @@ namespace CardsMath
                 
                 _cardsMatchSaveData.CardsMatched[_lastFlippedCardView.Id] = true;
                 _cardsMatchSaveData.CardsMatched[currentCardView.Id] = true;
+                
+                if(_cardsMatchSaveData.CardsMatched.All(matched => matched))
+                    _soundSystem.PlaySound(Const.Sounds.GameFinished);
             }
             else
             {
+                _soundSystem.PlaySound(Const.Sounds.CardMismatch);
                 _cardsMatchSaveData.CurrentCombo = 0;
                 
                 _lastFlippedCardView.FLip(1);
@@ -162,9 +171,10 @@ namespace CardsMath
         
         }
     
-        private bool CheckMatch(CardView card1, CardView card2)
+        // ToDo: can be moved to higher level of abstraction to handle different types of cards data
+        private bool CheckMatch(CardData card1, CardData card2)
         {
-            return card1.CardData.Id == card2.CardData.Id;
+            return card1.Id == card2.Id;
         }
 
         private void Clear()
