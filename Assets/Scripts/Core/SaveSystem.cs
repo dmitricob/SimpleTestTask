@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Core
 {
@@ -10,6 +9,7 @@ namespace Core
         public event Action<object> Saved;
         
         private Dictionary<Type, Action> _saveActions = new Dictionary<Type, Action>();
+        //ToDo: change to wait end of frame
         public void Update()
         {
             if(_saveActions.Count == 0)
@@ -22,8 +22,8 @@ namespace Core
             _saveActions.Clear();    
         }
         
+        //ToDo: add saves data handler that will save data automaticly when it was changed
         // avoid multiple saves of the same object at one frame
-
         public void Save<T>(T obj, string key = null)
         {
             if(_saveActions.ContainsKey(typeof(T)))
