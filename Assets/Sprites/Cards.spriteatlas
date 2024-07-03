@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cards
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 50
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 25e534b0dcbd4f046b35ca39d9c08b8b, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: bdc52980384b88440838c92323c1ce88, type: 3}
+  - {fileID: 21300000, guid: 56c39090ccb8d6d438eb75596521e35c, type: 3}
+  - {fileID: 21300000, guid: 0cffa1907be520244a0625200598e1f8, type: 3}
+  - {fileID: 21300000, guid: d9b508c037719824f8dd5a08d9019e38, type: 3}
+  - {fileID: 21300000, guid: 316072f0c3ae24449b9813c010f0d939, type: 3}
+  - {fileID: 21300000, guid: ea65dda1cf138164e9cfdaa324cdc8c5, type: 3}
+  - {fileID: 21300000, guid: ff653c428696be94bbe1bc0adeddf0cd, type: 3}
+  - {fileID: 21300000, guid: fb667ad2f49a43b4d9cc0501667333c9, type: 3}
+  - {fileID: 21300000, guid: 68d548f2caf8a954f9ff13e3611416ed, type: 3}
+  - {fileID: 21300000, guid: 30c095f3597fee843adc20375e829ac8, type: 3}
+  - {fileID: 21300000, guid: 46b58284f7834094fadf4412454f59c8, type: 3}
+  - {fileID: 21300000, guid: bb194394e7d624b49bd85e6c86b39365, type: 3}
+  - {fileID: 21300000, guid: e2d6c7556c4d22e4fb721d9568101621, type: 3}
+  - {fileID: 21300000, guid: 088d48859f0cc33449f9c248e7b93279, type: 3}
+  - {fileID: 21300000, guid: 46772eb640a8ccc4c82b88231993f44f, type: 3}
+  - {fileID: 21300000, guid: eb8cd847a83babc4dacc72417ac7415c, type: 3}
+  - {fileID: 21300000, guid: 242654571875f03408a168e6fff946d5, type: 3}
+  - {fileID: 21300000, guid: 163126c78c484ca4882d935a197936e4, type: 3}
+  - {fileID: 21300000, guid: 7bc5d9d73a678a24fb3108ab7bc3e647, type: 3}
+  - {fileID: 21300000, guid: 09c6c7281ac916641bc45ab883ac7cc1, type: 3}
+  - {fileID: 21300000, guid: abfcd938ea5dd71458c5e3b34ae0c860, type: 3}
+  - {fileID: 21300000, guid: 80f9fd78cc450154fb8a4ff7a17004e8, type: 3}
+  - {fileID: 21300000, guid: 656390a8cb9b0ae46aabd7c69f37888b, type: 3}
+  - {fileID: 21300000, guid: 862ea2c84272a3043abcb0012257381b, type: 3}
+  - {fileID: 21300000, guid: 4d3408f81783156408f2489b327c1616, type: 3}
+  - {fileID: 21300000, guid: 01170249badd6c64fb4e35729bf489e5, type: 3}
+  - {fileID: 21300000, guid: eebd7ad953890f0478bbc8d181301e65, type: 3}
+  - {fileID: 21300000, guid: c594f38a04703dd4b9f614acbbd7787c, type: 3}
+  - {fileID: 21300000, guid: 2d0787daf456eee40ad6b05ce587db36, type: 3}
+  - {fileID: 21300000, guid: caafcf5bfcc649f498939c10c032dcda, type: 3}
+  - {fileID: 21300000, guid: 7f8d93cc3624a4046a1b139d9782b042, type: 3}
+  - {fileID: 21300000, guid: f0663d1d20ea8b946a1b3f36b8723a1a, type: 3}
+  - {fileID: 21300000, guid: a89d367d2770a9f468fb8b34bdae1e08, type: 3}
+  - {fileID: 21300000, guid: cb1475bedb2e02b4fa180373d637a37f, type: 3}
+  - {fileID: 21300000, guid: bbc4eb8fe8b663f4a9270684b53e15c3, type: 3}
+  - {fileID: 21300000, guid: 71dcf8af92b82d6419804a1e4a4bc303, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - card-25
+  - card-5
+  - card-23
+  - card-29
+  - card-20
+  - card-13
+  - card-18
+  - card-32
+  - card-31
+  - card-3
+  - card-2
+  - card-17
+  - card-6
+  - card-15
+  - card-33
+  - card-0
+  - card-30
+  - card-28
+  - card-21
+  - card-11
+  - card-12
+  - card-7
+  - card-16
+  - card-8
+  - card-1
+  - card-14
+  - card-35
+  - card-9
+  - card-24
+  - card-22
+  - card-26
+  - card-34
+  - card-4
+  - card-27
+  - card-10
+  - card-19
+  m_RenderDataMap: {}
+  m_Tag: Cards
+  m_IsVariant: 0
