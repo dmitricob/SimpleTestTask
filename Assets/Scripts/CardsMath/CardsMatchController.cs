@@ -125,6 +125,7 @@ namespace CardsMath
                 }
                 
                 _grid.AddChild(card.gameObject);
+                card.transform.localScale = Vector3.one;
                 _cards.Add(card);
             }
         }

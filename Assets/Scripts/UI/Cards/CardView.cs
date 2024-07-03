@@ -109,6 +109,7 @@ namespace UI.Cards
                 yield return null;
             }
             
+            _cardImage.transform.localScale = Vector3.one;
             _cardButton.interactable = true;
 
             if(_isFlipped)

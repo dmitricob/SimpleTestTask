@@ -49,6 +49,7 @@ namespace Core
                 _popedObjects.Add(prefab.name, set);
             }
             set.Add(obj);
+            obj.transform.localScale = Vector3.one;
             return obj;
         }
         
