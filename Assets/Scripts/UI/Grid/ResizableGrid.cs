@@ -1,21 +1,24 @@
-using System;
+using System.Collections.Generic;
+using UI.Grid;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResizableGrid : MonoBehaviour
+public class ResizableGrid : MonoBehaviour, IGrid
 {
     [SerializeField] private GridLayoutGroup _gridLayout;
     [SerializeField] private RectTransform _gridRectTransform;
-    [SerializeField] private int _rows = 2;
-    [SerializeField] private int _columns = 2;
     [SerializeField] private float _spacingModif = 0.1f;
 
-    private void OnEnable()
+
+    private void Awake()
     {
-        SetupGrid(_rows, _columns);
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
-    private void SetupGrid(int rows, int columns)
+    public void SetGridSize(int rows, int columns)
     {
         var rect = _gridRectTransform.rect;
 
@@ -33,5 +36,14 @@ public class ResizableGrid : MonoBehaviour
         _gridLayout.spacing = new Vector2(spacing, spacing);
         _gridLayout.cellSize = new Vector2(cellSize, cellSize);
     }
+
+    public void AddChild(GameObject child)
+    {
+        child.transform.SetParent(transform);
+    }
     
+    public void RemoveChild(GameObject child)
+    {
+        child.transform.SetParent(null);
+    }
 }
