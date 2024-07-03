@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UI.Grid;
 using UnityEngine;
 using UnityEngine.UI;

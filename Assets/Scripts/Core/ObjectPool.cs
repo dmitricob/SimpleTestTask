@@ -5,8 +5,6 @@ namespace Core
 {
     public class ObjectPool
     {
-        public static ObjectPool Instance { get; } = new ObjectPool();
-        
         private Dictionary<string, Queue<GameObject>> _pushedObjects = new Dictionary<string, Queue<GameObject>>();
         private Dictionary<string, HashSet<GameObject>> _popedObjects = new Dictionary<string, HashSet<GameObject>>();
         private readonly GameObject _poolRoot;
